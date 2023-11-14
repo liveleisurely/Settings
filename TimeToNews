@@ -1,0 +1,32 @@
+import datetime as dt
+import pandas as pd
+import requests
+import time
+import urllib.request #
+import re
+import os
+
+from bs4 import BeautifulSoup
+from pandas import DataFrame
+from selenium.webdriver import Chrome
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
+from selenium import webdriver
+
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+
+url = "https://search.naver.com/search.naver?where=news&ie=utf8&sm=nws_hty&query=헬스케어" 
+driver.get(url)
+time.sleep(0.5)
+
+driver.execute_script("window.open('', '_blank');")
+new_tab_handle = driver.window_handles[-1]
+url2 = "https://search.naver.com/search.naver?where=news&ie=utf8&sm=nws_hty&query=핀테크"
+driver.switch_to.window(new_tab_handle)
+driver.get(url2)
+
+while True:
+    pass
